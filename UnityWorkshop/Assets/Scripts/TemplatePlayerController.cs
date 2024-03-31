@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class TemplatePlayerController : MonoBehaviour
 {
     public float AccelarationForward = 1f;
     public float BreakForce = 2f;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class SphereRoller : MonoBehaviour
 {
     public float moveSpeed = 5f; // Speed at which the sphere moves
-    public float rollSpeed = 150f; // Speed at which the sphere rolls
+    public float rollSpeed = 250f; // Speed at which the sphere rolls
 
     void Update()
     {

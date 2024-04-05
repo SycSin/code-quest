@@ -4984,8 +4984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
-  maxHeight: 1
-  minHeight: 0.4
+  maxHeight: 0.8
+  minHeight: 0
   scatteredPiecePrefab: {fileID: 1808700043401375973}
 --- !u!1 &1634697513884887946
 GameObject:
@@ -5107,8 +5107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
-  maxHeight: 1
-  minHeight: 0.4
+  maxHeight: 0.8
+  minHeight: 0
   scatteredPiecePrefab: {fileID: 1808700043401375973}
 --- !u!1 &1808700043401375973
 GameObject:
@@ -10194,8 +10194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
-  maxHeight: 1
-  minHeight: 0.4
+  maxHeight: 0.8
+  minHeight: 0
   scatteredPiecePrefab: {fileID: 1808700043401375973}
 --- !u!1 &8284342975550134012
 GameObject:

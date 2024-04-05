@@ -16,3 +16,4 @@ public class Main_Menu : MonoBehaviour
             Application.Quit();
         }
 }
+//player settings 

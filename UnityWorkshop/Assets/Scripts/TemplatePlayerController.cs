@@ -1,51 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class TemplatePlayerController : MonoBehaviour
+public class SphereRoller : MonoBehaviour
 {
-    public float AccelarationForward = 1f;
-    public float BreakForce = 2f;
-    public float RotateSpeed = 1f;
-    public float SpeedFalloff = 1f;
+    public float moveSpeed = 5f; // Speed at which the sphere moves
+    public float rollSpeed = 150f; // Speed at which the sphere rolls
 
-    private float _currentSpeed = 0f;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("w"))
+        if(Input.GetKey("space"))
         {
-            _currentSpeed += AccelarationForward * Time.deltaTime;
+            moveSpeed += 0.125f;
         }
+        // Get input from the keyboard
+        float moveHorizontal = Input.GetAxis("Horizontal"); // Maps to A/D or Left Arrow/Right Arrow keys
+        float moveVertical = Input.GetAxis("Vertical"); // Maps to W/S or Up Arrow/Down Arrow keys
 
-        if (Input.GetKey("d"))
-        {
-            transform.Rotate(Vector3.up, RotateSpeed * Time.deltaTime);
-        }
-        
-        if (Input.GetKey("a"))
-        {
-            transform.Rotate(Vector3.up, -RotateSpeed * Time.deltaTime);
-        }
+        // Calculate movement and rotation
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized * moveSpeed * Time.deltaTime;
+        Vector3 rotation = new Vector3(moveVertical, 0.0f, -moveHorizontal) * rollSpeed * Time.deltaTime;
 
-        float speedFalloff = SpeedFalloff;
-        if (Input.GetKey("s"))
-        {
-            speedFalloff *= BreakForce;
-        }
-
-        _currentSpeed -= speedFalloff * Time.deltaTime;
-        if (_currentSpeed < 0)
-            _currentSpeed = 0f;
-        
-        var directionForward = transform.forward;
-        transform.position += directionForward * _currentSpeed * Time.deltaTime;
+        // Apply movement and rotation to the sphere
+        transform.Translate(movement, Space.World); // Move the sphere
+        transform.Rotate(rotation, Space.World); // Rotate the sphere to simulate rolling
     }
 }

@@ -17,8 +17,8 @@ public class SphereMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal"); // Get input from the horizontal axis (A/D, Left/Right arrow keys)
-        float moveVertical = Input.GetAxis("Vertical"); // Get input from the vertical axis (W/S, Up/Down arrow keys)
+        float moveHorizontal = Input.GetAxis("Horizontal"); // Get input from the horizontal axis (A/D, Left/Right arrow keys or left joystick on Xbox controller)
+        float moveVertical = Input.GetAxis("Vertical"); // Get input from the vertical axis (W/S, Up/Down arrow keys or left joystick on Xbox controller)
 
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 

@@ -5203,6 +5203,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4051598480469531048, guid: a1619f96ab04c124a8e8f49f18e4222e, type: 3}
+      propertyPath: slowdownDuration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051598480469531048, guid: a1619f96ab04c124a8e8f49f18e4222e, type: 3}
+      propertyPath: slowedForceMagnitude
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5552958308860825347, guid: a1619f96ab04c124a8e8f49f18e4222e, type: 3}
       propertyPath: m_IsTrigger
       value: 0

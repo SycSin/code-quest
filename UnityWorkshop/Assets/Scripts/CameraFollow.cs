@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class DroneCameraFollow : MonoBehaviour
 {
-    public Transform target; // The target the camera should follow
-    public Vector3 offset; // The offset from the target position
-    public float smoothSpeed = 0.125f; // Smoothing speed
-    public bool lookAtTarget = true; // Whether the camera should rotate to look at the target
+    public Transform target; // The target the camera should follow (the sphere)
+    public Vector3 offset = new Vector3(0, 5, -10); // Offset from the target. Adjust for desired distance and height
+    public float followSpeed = 10f; // How quickly the camera catches up to the target
 
-    void LateUpdate()
+    private void FixedUpdate()
     {
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        // Target position with offset
+        Vector3 targetPosition = target.position + offset;
 
-        if (lookAtTarget)
-        {
-            transform.LookAt(target);
-        }
+        // Smoothly move the camera towards the target position
+        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+
+        // Optionally, make the camera look at the target.
+        // Remove or comment out this line if you don't want the camera to rotate at all.
+        transform.LookAt(target);
     }
 }

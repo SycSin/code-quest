@@ -4879,7 +4879,7 @@ GameObject:
   - component: {fileID: 59295731345251880}
   m_Layer: 0
   m_Name: Box3
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5002,7 +5002,7 @@ GameObject:
   - component: {fileID: 9114354795306138282}
   m_Layer: 0
   m_Name: Box2
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10088,7 +10088,7 @@ GameObject:
   - component: {fileID: 4398332297580371217}
   m_Layer: 0
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

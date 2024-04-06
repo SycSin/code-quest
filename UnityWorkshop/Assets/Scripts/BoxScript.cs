@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BoxScript : MonoBehaviour
 {
@@ -47,12 +48,32 @@ public class BoxScript : MonoBehaviour
                 audioManager.PlaySFXSound(audioManager.collisionsFxS);
                 // Scatter the box into pieces
                 Scatter();
-                // Destroy the box
-                Destroy(gameObject);
+                // Hide the box
+            	HideBox();
             }
             catch (MissingReferenceException e) {}
         }
     }
+	void HideBox()
+	{
+	    Renderer renderer = GetComponent<Renderer>();
+	    if (renderer != null)
+	    {
+	        renderer.enabled = false;
+	        StartCoroutine(UnhideBoxAfterDelay(3f)); // Start coroutine to unhide after 3 seconds
+	    }
+	}
+	
+	System.Collections.IEnumerator UnhideBoxAfterDelay(float delay)
+	{
+	    yield return new WaitForSeconds(delay);
+	
+	    Renderer renderer = GetComponent<Renderer>();
+	    if (renderer != null)
+	    {
+	        renderer.enabled = true; // Re-enable the renderer
+	    }
+	}
 
     void Scatter()
     {

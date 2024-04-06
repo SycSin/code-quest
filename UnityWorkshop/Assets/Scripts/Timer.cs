@@ -3,14 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Timer : MonoBehaviour
 {
 
-    public float laptime;
+    public float laptime = 0;
+    public float besttime = 0;
     private bool startTimer = false;
-
     [SerializeField] private TextMeshProUGUI LTime;
+    [SerializeField] private TextMeshProUGUI BTime;
+    private bool checkpoint1 = false;
+    private bool checkpoint2 = false;
+    private bool checkpoint3 = false;
+    private bool checkpoint4 = false;
+    private bool checkpoint5 = false;
+    private bool checkpoint6 = false;
+    private bool checkpoint7 = false;
     
     // Start is called before the first frame update
     void Start()
@@ -26,14 +35,78 @@ public class Timer : MonoBehaviour
             laptime = laptime + Time.deltaTime;
 
             LTime.text = "Laptime: " + laptime.ToString("F2");
-            Debug.Log(laptime);
+            
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("test");
+        if (other.gameObject.name == "StartingLine")
+        {
+            if (checkpoint1 == true && checkpoint2 == true && checkpoint3 == true && checkpoint4 == true && checkpoint5 == true && checkpoint6 == true && checkpoint7 == true)
+            {
+                startTimer = false;
 
-        startTimer = true;
+                if (besttime == 0 || laptime < besttime)
+                {
+                    besttime = laptime;
+                    BTime.text = "Best Time: " + besttime.ToString("F2");
+                }
+            }
+            else
+            {
+                startTimer = true;
+                checkpoint1 = false;
+                checkpoint2 = false;
+                checkpoint3 = false;
+                checkpoint4 = false;
+                checkpoint5 = false;
+                checkpoint6 = false;
+                checkpoint7 = false;
+            }
+            
+        }
+        
+        if (other.gameObject.name == "checkpoint1")
+        {
+            Debug.Log("1");
+            checkpoint1 = true;
+        }
+        
+        if (other.gameObject.name == "checkpoint2")
+        {
+            Debug.Log("2");
+            checkpoint2 = true;
+        }
+        
+        if (other.gameObject.name == "checkpoint3")
+        {
+            Debug.Log("3");
+            checkpoint3 = true;
+        }
+        
+        if (other.gameObject.name == "checkpoint4")
+        {
+            Debug.Log("4");
+            checkpoint4 = true;
+        }
+        
+        if (other.gameObject.name == "checkpoint5")
+        {
+            Debug.Log("5");
+            checkpoint5 = true;
+        }
+        
+        if (other.gameObject.name == "checkpoint6")
+        {
+            Debug.Log("6");
+            checkpoint6 = true;
+        }
+        
+        if (other.gameObject.name == "checkpoint7")
+        {
+            Debug.Log("7");
+            checkpoint7 = true;
+        }
     }
 }

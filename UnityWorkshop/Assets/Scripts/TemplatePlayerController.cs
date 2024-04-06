@@ -65,7 +65,6 @@ public class SphereMovement : MonoBehaviour
         {
             // Set the player's position to the latest checkpoint's position
             transform.position = checkpointPosition;
-			forceMagnitude = 1f; // Adjust the force magnitude to control the speed	
             Debug.Log("Player respawned at checkpoint " + checkpointPosition + ".");
         }
     }

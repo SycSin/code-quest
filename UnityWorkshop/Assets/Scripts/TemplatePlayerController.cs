@@ -7,6 +7,8 @@ public class SphereMovement : MonoBehaviour
     public float speedupForceMagnitude = 80f; // Adjust the speedup force magnitude after collision
     public float duration = 2f; // Duration of slowdown / speedup after collision
 
+    
+
     private Vector3 checkpointPosition;
 
     private Rigidbody rb;

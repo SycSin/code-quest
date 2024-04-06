@@ -27,7 +27,12 @@ public class SphereMovement : MonoBehaviour
 
         rb.AddForce(movement * currentForceMagnitude); // Apply the force to the Rigidbody for movement
     }
+    AudioManager audioManager;
 
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void OnCollisionEnter(Collision collision)
     {
         // Check if the sphere collided with an object tagged as "collectible"
@@ -41,11 +46,15 @@ public class SphereMovement : MonoBehaviour
             {
                 Debug.Log("slow down");
                 StartSlowdown();
+                // Play random collision sound effect
+               
+                audioManager.PlaySFXSound(audioManager.collisionsFxSFart);
             }
             else
             {
                 Debug.Log("speed up");
                 StartSpeedup();
+                audioManager.PlaySFXSound(audioManager.collisionsFxSMaxls);
             }
         }
     }

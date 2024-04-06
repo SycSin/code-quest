@@ -1786,8 +1786,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 6984113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.69997, y: 0}
+  m_AnchorMax: {x: 0.69997, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2454,7 +2454,7 @@ RectTransform:
   m_Father: {fileID: 2108756202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.69997, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4275,13 +4275,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 505151651}
   m_HandleRect: {fileID: 293662548}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.7
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 540293556}
+        m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1091135486
 GameObject:
   m_ObjectHideFlags: 0
@@ -7120,11 +7132,12 @@ MonoBehaviour:
   SFxSource: {fileID: 1240671420}
   menuMusic: {fileID: 8300000, guid: a6ea31fc2941b3748b7f86586e400c48, type: 3}
   buttonClick: {fileID: 0}
-  collisionsFxS: {fileID: 8300000, guid: e56d16fc72516fc4996ffc2df5bb7847, type: 3}
-  gamePlayMusic: {fileID: 8300000, guid: 80a0999074ec83144819d041899982dc, type: 3}
-  playerFall: {fileID: 0}
+  collisionsFxSMaxls: {fileID: 8300000, guid: e56d16fc72516fc4996ffc2df5bb7847, type: 3}
+  collisionsFxSFart: {fileID: 8300000, guid: 9f7cb424f64ec774bbf592fc32a41467, type: 3}
+  gamePlayMusic: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
+  playerFall: {fileID: 8300000, guid: 053baae4f41c15a4e8f9f255f5241135, type: 3}
   playerFinish: {fileID: 8300000, guid: 3c5bebe855116f844a22a7e1ddf4c3ba, type: 3}
-  playerJoinWorld: {fileID: 0}
+  playerJoinWorld: {fileID: 8300000, guid: 71497dacf148b494e9bc0756c830efcc, type: 3}
 --- !u!4 &1954626927
 Transform:
   m_ObjectHideFlags: 0

@@ -26,4 +26,9 @@ public class AudioSettings : MonoBehaviour
         float volume = gamemusicSlider.value;
         masteraudioMixer.SetFloat("game_param_audio", Mathf.Log10(volume) * 20);
     }
+    public void SetSFXVolume()
+    {
+        float volume = sfxSlider.value;
+        masteraudioMixer.SetFloat("sfx_param_audio", Mathf.Log10(volume) * 20);
+    }
 }

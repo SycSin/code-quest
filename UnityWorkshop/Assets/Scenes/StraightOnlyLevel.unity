@@ -7389,7 +7389,8 @@ MonoBehaviour:
   gamePlayMusic: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
   playerFall: {fileID: 8300000, guid: 053baae4f41c15a4e8f9f255f5241135, type: 3}
   playerFinish: {fileID: 8300000, guid: 3c5bebe855116f844a22a7e1ddf4c3ba, type: 3}
-  playerJoinWorld: {fileID: 8300000, guid: 71497dacf148b494e9bc0756c830efcc, type: 3}
+  playerJoinWorld: {fileID: 8300000, guid: 46ec6008caac6ff40ae6b503613009ce, type: 3}
+  playerCheated: {fileID: 8300000, guid: f796fcaeed09fdd46b5faef889cc81de, type: 3}
 --- !u!4 &1954626927
 Transform:
   m_ObjectHideFlags: 0

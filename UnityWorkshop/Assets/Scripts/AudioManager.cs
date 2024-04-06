@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerFall;
     public AudioClip playerFinish;
     public AudioClip playerJoinWorld;
+    public AudioClip playerCheated;
     
     private void Start()
     {

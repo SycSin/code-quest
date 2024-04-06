@@ -37,7 +37,12 @@ public class Timer : MonoBehaviour
             
         }
     }
+    AudioManager audioManager;
 
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "FinishLine")
@@ -49,9 +54,17 @@ public class Timer : MonoBehaviour
 
                 if (besttime == 0 || laptime < besttime)
                 {
+                    audioManager.PlaySFXSound(audioManager.playerFinish);
                     besttime = laptime;
                     BTime.text = "Best Time: " + besttime.ToString("F2");
+                    laptime = 0;
+                    
                 }
+            }
+            else
+            {
+                audioManager.PlaySFXSound(audioManager.playerCheated);
+                laptime = 0;
             }
         }
 

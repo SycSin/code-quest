@@ -32,13 +32,19 @@ public class BoxScript : MonoBehaviour
             movingUp = true;
         }
     }
+    AudioManager audioManager;
 
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void OnCollisionEnter(Collision collision)
     {
         // Check if the box collided with something
         if (collision.gameObject.CompareTag("Player"))
         {
             try {
+                audioManager.PlaySFXSound(audioManager.collisionsFxS);
                 // Scatter the box into pieces
                 Scatter();
                 // Destroy the box

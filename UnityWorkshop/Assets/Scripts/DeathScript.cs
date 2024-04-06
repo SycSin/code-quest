@@ -22,10 +22,12 @@ public class DeathScript : MonoBehaviour
             RestartScene();
         }
     }
+    
 
     void RestartScene()
     {
         // Reloads the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
     }
 }

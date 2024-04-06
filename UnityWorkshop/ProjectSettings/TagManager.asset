@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Projectile
   - Collectible
+  - Audio
   layers:
   - Default
   - TransparentFX

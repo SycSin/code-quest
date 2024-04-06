@@ -7,11 +7,14 @@ public class SphereMovement : MonoBehaviour
     public float speedupForceMagnitude = 80f; // Adjust the speedup force magnitude after collision
     public float duration = 2f; // Duration of slowdown / speedup after collision
 
+    private Vector3 checkpointPosition;
+
     private Rigidbody rb;
     private bool isSlowed = false; // Flag to indicate if the sphere is currently slowed down
 
     void Start()
     {
+    	checkpointPosition = GameObject.FindWithTag("Respawn").transform.position; // Store the position of the latest checkpoint
         rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
     }
 
@@ -31,7 +34,7 @@ public class SphereMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         // Check if the sphere collided with an object tagged as "collectible"
-        if (collision.gameObject.tag == "Collectible")
+        if (collision.gameObject.CompareTag("Collectible"))
         {
             // Randomly decide whether to slow down or speed up
             bool shouldSlowdown = Random.Range(0, 2) == 0; // 50% chance to slow down
@@ -39,16 +42,34 @@ public class SphereMovement : MonoBehaviour
             // Start slowing down or speeding up the sphere
             if (shouldSlowdown)
             {
-                Debug.Log("slow down");
+                Debug.Log("Slow down");
                 StartSlowdown();
             }
             else
             {
-                Debug.Log("speed up");
+                Debug.Log("Speed up");
                 StartSpeedup();
             }
         }
+        // Check if the sphere collided with an object tagged as "DeathArea"
+        if (collision.gameObject.CompareTag("DeathArea"))
+        {
+            // Set the player's position to the latest checkpoint's position
+            transform.position = checkpointPosition;
+			forceMagnitude = 1f; // Adjust the force magnitude to control the speed	
+            Debug.Log("Player respawned at checkpoint " + checkpointPosition + ".");
+        }
     }
+
+	void OnTriggerEnter(Collider collision)
+	{
+        // Check if the sphere collided with an object tagged as "Checkpoint"
+        if (collision.gameObject.CompareTag("Checkpoint"))
+        {
+            checkpointPosition = collision.transform.position;
+            Debug.Log("Checkpoint " + checkpointPosition + " crossed.");
+        }
+	}
 
     void StartSlowdown()
     {

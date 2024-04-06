@@ -24,6 +24,7 @@ public class AudioManager : MonoBehaviour
     
     private void Start()
     {
+        
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             menuMusicSource.clip = menuMusic;
@@ -39,6 +40,10 @@ public class AudioManager : MonoBehaviour
     public void PlaySFXSound(AudioClip clip)
     {
         SFxSource.PlayOneShot(clip);
+    }
+    public void PlayMouseClick()
+    {
+        SFxSource.PlayOneShot(buttonClick);
     }
 }
 

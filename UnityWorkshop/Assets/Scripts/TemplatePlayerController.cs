@@ -11,9 +11,17 @@ public class SphereMovement : MonoBehaviour
 
     private Rigidbody rb;
     private bool isSlowed = false; // Flag to indicate if the sphere is currently slowed down
+    
+    AudioManager audioManager;
+
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
+        audioManager.PlaySFXSound(audioManager.playerJoinWorld);
     	checkpointPosition = GameObject.FindWithTag("StartingPoint").transform.position; // Store the position of the latest checkpoint
         rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
     }
@@ -30,12 +38,7 @@ public class SphereMovement : MonoBehaviour
 
         rb.AddForce(movement * currentForceMagnitude); // Apply the force to the Rigidbody for movement
     }
-    AudioManager audioManager;
-
-    public void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
+    
     void OnCollisionEnter(Collision collision)
     {
         // Check if the sphere collided with an object tagged as "collectible"

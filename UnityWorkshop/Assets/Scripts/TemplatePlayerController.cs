@@ -80,6 +80,11 @@ public class SphereMovement : MonoBehaviour
             checkpointPosition = collision.transform.position;
             Debug.Log("Checkpoint " + checkpointPosition + " crossed.");
         }
+
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+            checkpointPosition = GameObject.FindWithTag("StartingPoint").transform.position;
+        }
 	}
 
     void StartSlowdown()

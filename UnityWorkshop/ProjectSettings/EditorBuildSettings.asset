@@ -14,4 +14,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Movement Scene.unity
     guid: 7686e892de2f44919a93db1b526e4a8f
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 51a1026129485482392c065206b7e6fe, type: 2}

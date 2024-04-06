@@ -61,7 +61,7 @@ AudioMixerController:
   - guid: 6615cfdf2f2b655419fdf31bdbc823f0
     name: menu_param_audio
   - guid: 9ff14ce04650b36409f20eb6f9292d3d
-    name: music
+    name: game_param_audio
   m_AudioMixerGroupViews:
   - guids:
     - d3a092886f169cf469516bba7f0e27bb

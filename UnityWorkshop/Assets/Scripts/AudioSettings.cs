@@ -8,6 +8,7 @@ public class AudioSettings : MonoBehaviour
 {
     [SerializeField] private AudioMixer masteraudioMixer;
     [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider gamemusicSlider;
     [SerializeField] private Slider sfxSlider;
     
     private void start()
@@ -19,5 +20,10 @@ public class AudioSettings : MonoBehaviour
     {
         float volume = musicSlider.value;
         masteraudioMixer.SetFloat("menu_param_audio", Mathf.Log10(volume) * 20);
+    }
+    public void GameMusicVolume()
+    {
+        float volume = gamemusicSlider.value;
+        masteraudioMixer.SetFloat("game_param_audio", Mathf.Log10(volume) * 20);
     }
 }

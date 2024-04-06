@@ -19,7 +19,6 @@ public class Timer : MonoBehaviour
     private bool checkpoint4 = false;
     private bool checkpoint5 = false;
     private bool checkpoint6 = false;
-    private bool checkpoint7 = false;
     
     // Start is called before the first frame update
     void Start()
@@ -41,9 +40,10 @@ public class Timer : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "StartingLine")
+        if (other.gameObject.name == "FinishLine")
         {
-            if (checkpoint1 == true && checkpoint2 == true && checkpoint3 == true && checkpoint4 == true && checkpoint5 == true && checkpoint6 == true && checkpoint7 == true)
+            if (checkpoint1 == true && checkpoint2 == true && checkpoint3 == true && checkpoint4 == true &&
+                checkpoint5 == true && checkpoint6 == true)
             {
                 startTimer = false;
 
@@ -53,8 +53,10 @@ public class Timer : MonoBehaviour
                     BTime.text = "Best Time: " + besttime.ToString("F2");
                 }
             }
-            else
-            {
+        }
+
+        if (other.gameObject.name == "StartingLine") 
+        {
                 startTimer = true;
                 checkpoint1 = false;
                 checkpoint2 = false;
@@ -62,9 +64,6 @@ public class Timer : MonoBehaviour
                 checkpoint4 = false;
                 checkpoint5 = false;
                 checkpoint6 = false;
-                checkpoint7 = false;
-            }
-            
         }
         
         if (other.gameObject.name == "checkpoint1")
@@ -102,11 +101,6 @@ public class Timer : MonoBehaviour
             Debug.Log("6");
             checkpoint6 = true;
         }
-        
-        if (other.gameObject.name == "checkpoint7")
-        {
-            Debug.Log("7");
-            checkpoint7 = true;
-        }
+       
     }
 }

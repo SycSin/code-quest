@@ -273,8 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laptime: 0
   besttime: 0
-  LTime: {fileID: 0}
-  BTime: {fileID: 0}
+  LTime: {fileID: 7007680895206495968, guid: f348197c449d046358f28f3ac7792e1e, type: 3}
+  BTime: {fileID: 7632088433582302509, guid: ade0faf69b8734b4cbcf9bcc101b6357, type: 3}
 --- !u!1 &8954576314969883505
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +284,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4390412783681523140}
-  - component: {fileID: 29111038416454819}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -309,33 +308,3 @@ Transform:
   - {fileID: 144203441658405322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &29111038416454819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8954576314969883505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 9547001c61582724894ebf550c5b4921, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 4945157947074625995}

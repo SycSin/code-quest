@@ -1,56 +1,53 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SphereMovement : MonoBehaviour
 {
-    public float forceMagnitude = 10f; // Adjust the force magnitude to control the speed
-    public float slowedForceMagnitude = 2f; // Adjust the slowed force magnitude after collision
-    public float speedupForceMagnitude = 80f; // Adjust the speedup force magnitude after collision
-    public float duration = 2f; // Duration of slowdown / speedup after collision
+    public float forceMagnitude = 10f;
+    public float slowedForceMagnitude = 2f;
+    public float speedupForceMagnitude = 80f;
+    public float duration = 2f;
 
     private Vector3 checkpointPosition;
-
     private Rigidbody rb;
-    private bool isSlowed = false; // Flag to indicate if the sphere is currently slowed down
+    private bool isSlowed = false;
+    private Vector2 moveInput;
+	private AudioManager audioManager;
 
     void Start()
     {
-    	checkpointPosition = GameObject.FindWithTag("StartingPoint").transform.position; // Store the position of the latest checkpoint
-        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
+        checkpointPosition = GameObject.FindWithTag("StartingPoint").transform.position;
+        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal"); // Get input from the horizontal axis (A/D, Left/Right arrow keys or left joystick on Xbox controller)
-        float moveVertical = Input.GetAxis("Vertical"); // Get input from the vertical axis (W/S, Up/Down arrow keys or left joystick on Xbox controller)
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        // Apply force magnitude based on whether the sphere is slowed down or not
+        Vector3 movement = new Vector3(moveInput.x, 0.0f, moveInput.y);
         float currentForceMagnitude = isSlowed ? slowedForceMagnitude : forceMagnitude;
-
-        rb.AddForce(movement * currentForceMagnitude); // Apply the force to the Rigidbody for movement
+        rb.AddForce(movement * currentForceMagnitude);
     }
-    AudioManager audioManager;
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
 
     public void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        // Check if the sphere collided with an object tagged as "collectible"
         if (collision.gameObject.CompareTag("Collectible"))
         {
-            // Randomly decide whether to slow down or speed up
             bool shouldSlowdown = Random.Range(0, 2) == 0; // 50% chance to slow down
 
-            // Start slowing down or speeding up the sphere
             if (shouldSlowdown)
             {
                 Debug.Log("Slow down");
                 StartSlowdown();
-                // Play random collision sound effect
-               
                 audioManager.PlaySFXSound(audioManager.collisionsFxSFart);
             }
             else
@@ -60,51 +57,43 @@ public class SphereMovement : MonoBehaviour
                 audioManager.PlaySFXSound(audioManager.collisionsFxSMaxls);
             }
         }
-        // Check if the sphere collided with an object tagged as "DeathArea"
+
         if (collision.gameObject.CompareTag("DeathArea"))
         {
-            // Set the player's position to the latest checkpoint's position
             transform.position = checkpointPosition;
             Debug.Log("Player respawned at checkpoint " + checkpointPosition + ".");
         }
     }
 
-	void OnTriggerEnter(Collider collision)
-	{
-        // Check if the sphere collided with an object tagged as "Checkpoint"
+    void OnTriggerEnter(Collider collision)
+    {
         if (collision.gameObject.CompareTag("Checkpoint"))
         {
             checkpointPosition = collision.transform.position;
             Debug.Log("Checkpoint " + checkpointPosition + " crossed.");
         }
-	}
+    }
 
     void StartSlowdown()
     {
-        // Slow down the sphere
         isSlowed = true;
-        // Restore normal speed after a certain duration
         Invoke("StopSlowdown", duration);
     }
 
     void StartSpeedup()
     {
-        // Speed up the sphere
         float currentForceMagnitude = isSlowed ? slowedForceMagnitude : forceMagnitude;
         rb.velocity *= (speedupForceMagnitude / currentForceMagnitude);
-        // Restore normal speed after a certain duration
         Invoke("StopSpeedup", duration);
     }
 
     void StopSlowdown()
     {
-        // Restore normal speed
         isSlowed = false;
     }
 
     void StopSpeedup()
     {
-        // Restore normal speed
         float currentForceMagnitude = isSlowed ? slowedForceMagnitude : forceMagnitude;
         rb.velocity *= (currentForceMagnitude / speedupForceMagnitude);
     }

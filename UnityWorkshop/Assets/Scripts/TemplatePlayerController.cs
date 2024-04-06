@@ -14,7 +14,7 @@ public class SphereMovement : MonoBehaviour
 
     void Start()
     {
-    	checkpointPosition = GameObject.FindWithTag("Respawn").transform.position; // Store the position of the latest checkpoint
+    	checkpointPosition = GameObject.FindWithTag("StartingPoint").transform.position; // Store the position of the latest checkpoint
         rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
     }
 

@@ -38,10 +38,13 @@ public class BoxScript : MonoBehaviour
         // Check if the box collided with something
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Scatter the box into pieces
-            Scatter();
-            // Destroy the box
-            Destroy(gameObject);
+            try {
+                // Scatter the box into pieces
+                Scatter();
+                // Destroy the box
+                Destroy(gameObject);
+            }
+            catch (MissingReferenceException e) {}
         }
     }
 

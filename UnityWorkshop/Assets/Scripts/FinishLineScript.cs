@@ -14,7 +14,7 @@ public class FinishLineScript : MonoBehaviour
     void Start()
     {
         // Find the GameObject with the "Respawn" tag
-        respawnObject = GameObject.FindWithTag("Respawn");
+        respawnObject = GameObject.FindWithTag("StartingPoint");
     }
 
     private void OnTriggerEnter(Collider other)

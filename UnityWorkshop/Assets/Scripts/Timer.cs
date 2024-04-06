@@ -51,20 +51,20 @@ public class Timer : MonoBehaviour
                 checkpoint5 == true && checkpoint6 == true)
             {
                 startTimer = false;
-
+                
                 if (besttime == 0 || laptime < besttime)
                 {
                     audioManager.PlaySFXSound(audioManager.playerFinish);
                     besttime = laptime;
                     BTime.text = "Best Time: " + besttime.ToString("F2");
-                    laptime = 0;
                     
                 }
+
+                laptime = 0;
             }
             else
             {
                 audioManager.PlaySFXSound(audioManager.playerCheated);
-                laptime = 0;
             }
         }
 

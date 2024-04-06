@@ -14,7 +14,8 @@ public class AudioManager : MonoBehaviour
     [Header("----Audio Clips----")]
     public AudioClip menuMusic;
     public AudioClip buttonClick;
-    public AudioClip collisionsFxS;
+    public AudioClip collisionsFxSMaxls;
+    public AudioClip collisionsFxSFart;
     public AudioClip gamePlayMusic;
     public AudioClip playerFall;
     public AudioClip playerFinish;
